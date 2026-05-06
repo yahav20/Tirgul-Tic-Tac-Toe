@@ -26,6 +26,8 @@ class Game:
             return False, "Out of bounds"
         if player != self.current_turn:
             return False, "Not your turn"
+        if self.board[row][col] != '':
+            return False, "Cell already occupied"
         self.board[row][col] = self.symbols[player]
         self.current_turn = (self.current_turn + 1) % self.num_players
         return True, ""
